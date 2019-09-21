@@ -22,7 +22,7 @@
 <meta name="keywords" content="Vue,Vue Router">
 
 
-<meta name="description" content="1. Vue传参方式1.1 通过动态路由传参1.2 通过路由URL中添加query参数传参2. 组件中接收参数的方式2.1 this.$router.params2.2 this.$router...">
+<meta name="description" content="本篇文章将介绍Vue router中传参的两种方式及在组件中对应的接收参数的方式1. Vue传参方式1.1 通过动态路由传参我们经常需要把某种模式匹配到的所有路由，全都映射到同个组件。例如，我们...">
 
 
 <meta name="robots" content="all">
@@ -33,7 +33,7 @@
 
 <title>
     
-    通过Vue路由传参的几种方式及vue组件中接收参数的方式 |
+    通过Vue路由传参的两种方式及Vue组件中接收参数的方式 |
     
     聂俊蝉的个人博客
 </title>
@@ -128,9 +128,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="通过Vue路由传参的几种方式及vue组件中接收参数的方式">
+        <h1 id="通过Vue路由传参的两种方式及Vue组件中接收参数的方式">
             
-            通过Vue路由传参的几种方式及vue组件中接收参数的方式
+            通过Vue路由传参的两种方式及Vue组件中接收参数的方式
             
         </h1>
         <div class="post-meta">
@@ -165,7 +165,39 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1-Vue传参方式"><a href="#1-Vue传参方式" class="headerlink" title="1. Vue传参方式"></a>1. Vue传参方式</h2><h3 id="1-1-通过动态路由传参"><a href="#1-1-通过动态路由传参" class="headerlink" title="1.1 通过动态路由传参"></a>1.1 通过动态路由传参</h3><h3 id="1-2-通过路由URL中添加query参数传参"><a href="#1-2-通过路由URL中添加query参数传参" class="headerlink" title="1.2 通过路由URL中添加query参数传参"></a>1.2 通过路由URL中添加query参数传参</h3><h2 id="2-组件中接收参数的方式"><a href="#2-组件中接收参数的方式" class="headerlink" title="2. 组件中接收参数的方式"></a>2. 组件中接收参数的方式</h2><h3 id="2-1-this-router-params"><a href="#2-1-this-router-params" class="headerlink" title="2.1 this.$router.params"></a>2.1 this.$router.params</h3><h3 id="2-2-this-router-query"><a href="#2-2-this-router-query" class="headerlink" title="2.2 this.$router.query"></a>2.2 this.$router.query</h3><h3 id="2-3-将路由中的参数设置到组件的props上"><a href="#2-3-将路由中的参数设置到组件的props上" class="headerlink" title="2.3 将路由中的参数设置到组件的props上"></a>2.3 将路由中的参数设置到组件的props上</h3>
+        <pre><code>本篇文章将介绍Vue router中传参的两种方式及在组件中对应的接收参数的方式</code></pre><h2 id="1-Vue传参方式"><a href="#1-Vue传参方式" class="headerlink" title="1. Vue传参方式"></a>1. Vue传参方式</h2><h3 id="1-1-通过动态路由传参"><a href="#1-1-通过动态路由传参" class="headerlink" title="1.1 通过动态路由传参"></a>1.1 通过动态路由传参</h3><p>我们经常需要把某种模式匹配到的所有路由，全都映射到同个组件。例如，我们有一个 User 组件，对于所有 ID 各不相同的用户，都要使用这个组件来渲染。那么，我们可以在 vue-router 的路由路径中使用“动态路径参数”(dynamic segment) 来达到这个效果：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> User = &#123;</span><br><span class="line">  template: <span class="string">'&lt;div&gt;User&lt;/div&gt;'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    <span class="comment">// 动态路径参数 以冒号开头</span></span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'/user/:id'</span>, <span class="attr">component</span>: User &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>在这个实例中，我们就可以通过:id这种方式实现把参数的值传递到组件中，现在呢，像 /user/foo 和 /user/bar这样的路由，将把参数值foo、bar通过参数名id传递。</p>
+<h3 id="1-2-通过路由URL中添加query参数传参"><a href="#1-2-通过路由URL中添加query参数传参" class="headerlink" title="1.2 通过路由URL中添加query参数传参"></a>1.2 通过路由URL中添加query参数传参</h3><p>通过路由URL中添加query参数的方式，就和普通的http URL的get传参方式一样，通过在链接地址后面添加?queryName=queryValue的方式实现传参，如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> User = &#123;</span><br><span class="line">  template: <span class="string">'&lt;div&gt;User&lt;/div&gt;'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    <span class="comment">// 动态路径参数 以冒号开头</span></span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'/user/:id'</span>, <span class="attr">component</span>: User &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-组件中接收参数的方式"><a href="#2-组件中接收参数的方式" class="headerlink" title="2. 组件中接收参数的方式"></a>2. 组件中接收参数的方式</h2><p>通过路由将参数传递后，我们需要在组件中进行接收，这样才可以在需要用到此参数的地方拿到对应的参数值，对应着两种传参方式，也分别有两种接收参数的形式。</p>
+<h3 id="2-1-通过this-router-params接收"><a href="#2-1-通过this-router-params接收" class="headerlink" title="2.1 通过this.$router.params接收"></a>2.1 通过this.$router.params接收</h3><p>形如/user/:id这种的动态路由参数，我们可以通过this.$router.params接收，如在路由/user/:id中，在组件中拿到id的值的代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id = <span class="keyword">this</span>.$route.params.id;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-通过this-router-query接收"><a href="#2-2-通过this-router-query接收" class="headerlink" title="2.2 通过this.$router.query接收"></a>2.2 通过this.$router.query接收</h3><p>形如/search?q=vue这种的通过在链接地址后面添加?queryName=queryValue的方式实现传参的方式，我们可以通过this.$router.query接收，如在/search?q=vue中，在组件中拿到q的值的代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> q = <span class="keyword">this</span>.$route.query.q;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-将路由中的参数设置到组件的props上"><a href="#2-3-将路由中的参数设置到组件的props上" class="headerlink" title="2.3 将路由中的参数设置到组件的props上"></a>2.3 将路由中的参数设置到组件的props上</h3><p>上面两种接收参数的方式，都是通过$route对象来获取参数值的，然而在组件中使用 $route 会使之与其对应路由形成高度耦合，从而使组件只能在某些特定的 URL 上使用，限制了其灵活性。<br>因此，我们可以使用 props 将组件和路由解耦，用这种方式取代直接在组件中使用 $route 获取参数值的方式，代码示例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> User = &#123;</span><br><span class="line">  props: [<span class="string">'id'</span>],</span><br><span class="line">  template: <span class="string">'&lt;div&gt;User &#123;&#123; id &#125;&#125;&lt;/div&gt;'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'/user/:id'</span>, <span class="attr">component</span>: User, <span class="attr">props</span>: <span class="literal">true</span> &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对于包含命名视图的路由，你必须分别为每个命名视图添加 `props` 选项：</span></span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">'/user/:id'</span>,</span><br><span class="line">      components: &#123; <span class="attr">default</span>: User, <span class="attr">sidebar</span>: Sidebar &#125;,</span><br><span class="line">      props: &#123; <span class="attr">default</span>: <span class="literal">true</span>, <span class="attr">sidebar</span>: <span class="literal">false</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这样你便可以在任何地方使用该组件，使得该组件更易于重用和测试。</p>
+<p>这里需要注意的是，props设置有三种模式</p>
+<ul>
+<li><p>布尔模式<br>如果 props 被设置为 true，route.params 将会被设置为组件属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'/user/:id'</span>, <span class="attr">component</span>: User, <span class="attr">props</span>: <span class="literal">true</span> &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对象模式<br>如果 props 是一个对象，它会被按原样设置为组件属性。当 props 是静态的时候有用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'/promotion/from-newsletter'</span>, <span class="attr">component</span>: Promotion, <span class="attr">props</span>: &#123; <span class="attr">newsletterPopup</span>: <span class="literal">false</span> &#125; &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数模式<br>你可以创建一个函数返回 props。这样你便可以将参数转换成另一种类型，将静态值与基于路由的值结合等等。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">'/search'</span>, <span class="attr">component</span>: SearchUser, <span class="attr">props</span>: <span class="function">(<span class="params">route</span>) =&gt;</span> (&#123; <span class="attr">query</span>: route.query.q &#125;) &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>URL /search?q=vue 会将 {query: ‘vue’} 作为属性传递给 SearchUser 组件。</p>
+
     </div>
     
     <div class="post-footer">
@@ -184,10 +216,10 @@
 <div class="article-nav prev-next-wrap clearfix">
     
     
-    <a href="/2019/09/19/hexo-github-pages/" class="next-post btn btn-default" title='如何使用Hexo搭建Github Pages博客'>
+    <a href="/2019/09/19/hexo-github-pages/" class="next-post btn btn-default" title='如何使用Hexo搭建Github个人博客'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            如何使用Hexo搭建Github Pages博客</span><i class="fa fa-angle-right fa-fw"></i>
+            如何使用Hexo搭建Github个人博客</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -226,7 +258,7 @@ new Valine({
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Vue传参方式"><span class="toc-text">1. Vue传参方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-通过动态路由传参"><span class="toc-text">1.1 通过动态路由传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-通过路由URL中添加query参数传参"><span class="toc-text">1.2 通过路由URL中添加query参数传参</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-组件中接收参数的方式"><span class="toc-text">2. 组件中接收参数的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-this-router-params"><span class="toc-text">2.1 this.$router.params</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-this-router-query"><span class="toc-text">2.2 this.$router.query</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-将路由中的参数设置到组件的props上"><span class="toc-text">2.3 将路由中的参数设置到组件的props上</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Vue传参方式"><span class="toc-text">1. Vue传参方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-通过动态路由传参"><span class="toc-text">1.1 通过动态路由传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-通过路由URL中添加query参数传参"><span class="toc-text">1.2 通过路由URL中添加query参数传参</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-组件中接收参数的方式"><span class="toc-text">2. 组件中接收参数的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-通过this-router-params接收"><span class="toc-text">2.1 通过this.$router.params接收</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-通过this-router-query接收"><span class="toc-text">2.2 通过this.$router.query接收</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-将路由中的参数设置到组件的props上"><span class="toc-text">2.3 将路由中的参数设置到组件的props上</span></a></li></ol></li></ol>
         
     </div>
 </aside>
