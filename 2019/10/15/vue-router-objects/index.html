@@ -19,10 +19,10 @@
     <link rel="dns-prefetch" href="http://johnnynie.github.io">
     <!--SEO-->
 
-<meta name="keywords" content="前端技术，vue,react,webpack,html,js,css,es6,less,sass,jade,ejs,gulp">
+<meta name="keywords" content="Vue,Vue Router">
 
 
-<meta name="description" content="聂俊蝉的个人博客，聂俊蝉的个人主页，聂俊蝉的技术文章">
+<meta name="description" content="本篇文章将介绍Vue-router中的Router、Router实例、Router对象的区别与联系1. RouterRouter是Vue-router的定义，在面向对象的思想中可以理解为Rout...">
 
 
 <meta name="robots" content="all">
@@ -33,7 +33,7 @@
 
 <title>
     
-    归档 |
+    搞清楚Vue-router中的Router、Router实例、Router对象的区别与联系 |
     
     聂俊蝉的个人博客
 </title>
@@ -124,152 +124,125 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <div id="main">
-    <div class="timebox">
-        <div class="timeline">
-            <ul>
-                
-                
-                
-                
-                
-                
-                <h2>
-                    2019
-                </h2>
-                
-                
-                <li>
-                    
-                    <h3>
-                        15<span>
-                            10月</span>
-                    </h3>
-                    <a href="/2019/10/15/vue-router-objects/" title="搞清楚Vue-router中的Router、Router实例、Router对象的区别与联系" target="_blank">
-                        搞清楚Vue-router中的Router、Router实例、Router对象的区别与联系</a>
-                </li>
-                
-                
-                
-                
-                
-                
-                <li>
-                    
-                    <h3>
-                        14<span>
-                            10月</span>
-                    </h3>
-                    <a href="/2019/10/14/vue-router-advanced/" title="Vue-router高级进阶知识" target="_blank">
-                        Vue-router高级进阶知识</a>
-                </li>
-                
-                
-                
-                
-                
-                
-                <li>
-                    
-                    <h3>
-                        12<span>
-                            10月</span>
-                    </h3>
-                    <a href="/2019/10/12/vue-router-basic/" title="Vue-router基础知识" target="_blank">
-                        Vue-router基础知识</a>
-                </li>
-                
-                
-                
-                
-                
-                
-                <li>
-                    
-                    <h3>
-                        21<span>
-                            09月</span>
-                    </h3>
-                    <a href="/2019/09/21/vue-router-params/" title="通过Vue路由传参的两种方式及Vue组件中接收参数的方式" target="_blank">
-                        通过Vue路由传参的两种方式及Vue组件中接收参数的方式</a>
-                </li>
-                
-                
-                
-                
-                
-                
-                <li>
-                    
-                    <h3>
-                        19<span>
-                            09月</span>
-                    </h3>
-                    <a href="/2019/09/19/hexo-github-pages/" title="如何使用Hexo搭建Github个人博客" target="_blank">
-                        如何使用Hexo搭建Github个人博客</a>
-                </li>
-                
-                
-            </ul>
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="搞清楚Vue-router中的Router、Router实例、Router对象的区别与联系">
+            
+            搞清楚Vue-router中的Router、Router实例、Router对象的区别与联系
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Vue/">Vue</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Vue/">Vue</a> <a class="tag-link" href="/tags/Vue-Router/">Vue Router</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/10/15</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <pre><code>本篇文章将介绍Vue-router中的Router、Router实例、Router对象的区别与联系</code></pre><h2 id="1-Router"><a href="#1-Router" class="headerlink" title="1. Router"></a>1. Router</h2><p>Router是Vue-router的定义，在面向对象的思想中可以理解为Router类。</p>
+<h2 id="2-Router实例"><a href="#2-Router实例" class="headerlink" title="2. Router实例"></a>2. Router实例</h2><p>Router实例是指通过new Router()方法实例化的一个Router实例对象。</p>
+<h2 id="3-Router对象"><a href="#3-Router对象" class="headerlink" title="3. Router对象"></a>3. Router对象</h2><p>一个路由对象 (Router对象) 表示当前激活的路由的状态信息，包含了当前 URL 解析得到的信息（$route.path、$route.params、$route.query、$route.hash、$route.fullPath、$route.matched、$route.name、$route.redirectedFrom），还有 URL 匹配到的路由记录 (route records)。路由对象是不可变的，每次成功的导航后都会产生一个新的对象。</p>
+<p>Vue-router官方文档中的“API参考”的内容，主要就是对这三者的配置选项、属性、方法等的详细描述。该文档的路径为：<br><a href="https://router.vuejs.org/zh/api/" target="_blank" rel="noopener">https://router.vuejs.org/zh/api/</a></p>
+<p>注意：下面这些属性成员会被注入到每个Vue子组件中（其中的this指向组件中的Vue实例）。</p>
+<ul>
+<li>this.$router</li>
+</ul>
+<p>router 实例。</p>
+<ul>
+<li>this.$route</li>
+</ul>
+<p>router对象</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="http://johnnynie.github.io" target="_blank">Johnnynie</a>
+            
+            
+        </div>
+        <div>
+            
         </div>
     </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2019/10/14/vue-router-advanced/" class="next-post btn btn-default" title='Vue-router高级进阶知识'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Vue-router高级进阶知识</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
 </div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: '昵称,邮箱'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
                 </main>
                 
-                    
-<aside class="col-md-4 sidebar">
-    
-    
-<div class="widget">
-    <h3 class="title">
-        分类
-    </h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/"><i class="fa" aria-hidden="true">Vue</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端工具/"><i class="fa" aria-hidden="true">前端工具</i></a><span class="category-list-count">1</span></li></ul>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        归档
-    </h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/"><i class="fa" aria-hidden="true">2019年10月</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/"><i class="fa" aria-hidden="true">2019年09月</i></a><span class="archive-list-count">2</span></li></ul>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        标签云
-    </h3>
-    <div class="content tag-cloud">
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
         
-        <a href="/tags/Vue/" style="font-size: 20px;">Vue</a> <a href="/tags/Vue-Router/" style="font-size: 20px;">Vue Router</a> <a href="/tags/github-pages/" style="font-size: 10px;">github pages</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Router"><span class="toc-text">1. Router</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Router实例"><span class="toc-text">2. Router实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Router对象"><span class="toc-text">3. Router对象</span></a></li></ol>
         
     </div>
-</div>
-
-    
-    
-<div class="widget">
-    <h3 class="title">
-        友链
-    </h3>
-    <div class="content friends-link">
-        
-        <a href="https://hexo.io/zh-cn/" class="fa" target="_blank">
-            Hexo官网</a>
-        
-        <a href="http://118.25.36.250/" class="fa" target="_blank">
-            帅帅的小伙</a>
-        
-    </div>
-</div>
-
-    
 </aside>
-
                 
             </div>
         </div>
@@ -305,8 +278,6 @@
         </div>
     </div>
 </div>
-
-<script src="/js/search.js?rev=@@hash"></script>
 
 
 
