@@ -22,7 +22,15 @@
 <meta name="keywords" content="Vue,Vue Router">
 
 
-<meta name="description" content="本篇文章将介绍Vue-router中的Router、Router实例、Router对象的区别与联系1. RouterRouter是Vue-router的定义，在面向对象的思想中可以理解为Rout...">
+<meta name="description" content="本篇文章将介绍常用的几个Vue UI框架，不说好坏，只对一些参数进行对比,大家可以根据自己的考量选择适合自己的UI框架。1. 对比
+
+
+框架名称
+组件数量
+单元测试率
+admin项目
+维护团队
+...">
 
 
 <meta name="robots" content="all">
@@ -33,7 +41,7 @@
 
 <title>
     
-    搞清楚Vue-router中的Router、Router实例、Router对象的区别与联系 |
+    Vue UI框架对比：Element UI、Ant Design Vue、iView |
     
     聂俊蝉的个人博客
 </title>
@@ -128,9 +136,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="搞清楚Vue-router中的Router、Router实例、Router对象的区别与联系">
+        <h1 id="Vue UI框架对比：Element UI、Ant Design Vue、iView">
             
-            搞清楚Vue-router中的Router、Router实例、Router对象的区别与联系
+            Vue UI框架对比：Element UI、Ant Design Vue、iView
             
         </h1>
         <div class="post-meta">
@@ -155,7 +163,7 @@
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2019/10/15</span>
+            2019/10/16</span>
     </span>
     
     
@@ -165,19 +173,58 @@
     </div>
     
     <div class="post-body post-content">
-        <pre><code>本篇文章将介绍Vue-router中的Router、Router实例、Router对象的区别与联系</code></pre><h2 id="1-Router"><a href="#1-Router" class="headerlink" title="1. Router"></a>1. Router</h2><p>Router是Vue-router的定义，在面向对象的思想中可以理解为Router类。</p>
-<h2 id="2-Router实例"><a href="#2-Router实例" class="headerlink" title="2. Router实例"></a>2. Router实例</h2><p>Router实例是指通过new Router()方法实例化的一个Router实例对象。</p>
-<h2 id="3-Router对象"><a href="#3-Router对象" class="headerlink" title="3. Router对象"></a>3. Router对象</h2><p>一个路由对象 (Router对象) 表示当前激活的路由的状态信息，包含了当前 URL 解析得到的信息（$route.path、$route.params、$route.query、$route.hash、$route.fullPath、$route.matched、$route.name、$route.redirectedFrom），还有 URL 匹配到的路由记录 (route records)。路由对象是不可变的，每次成功的导航后都会产生一个新的对象。</p>
-<p>Vue-router官方文档中的“API参考”的内容，主要就是对这三者的配置选项、属性、方法等的详细描述。该文档的路径为：<br><a href="https://router.vuejs.org/zh/api/" target="_blank" rel="noopener">https://router.vuejs.org/zh/api/</a></p>
-<p>注意：下面这些属性成员会被注入到每个Vue子组件中（其中的this指向组件中的Vue实例）。</p>
-<ul>
-<li>this.$router</li>
+        <pre><code>本篇文章将介绍常用的几个Vue UI框架，不说好坏，只对一些参数进行对比,大家可以根据自己的考量选择适合自己的UI框架。</code></pre><h2 id="1-对比"><a href="#1-对比" class="headerlink" title="1. 对比"></a>1. 对比</h2><table>
+<thead>
+<tr>
+<th>框架名称</th>
+<th>组件数量</th>
+<th>单元测试率</th>
+<th>admin项目</th>
+<th>维护团队</th>
+<th>GitHub Star数（2019/10/16）</th>
+<th>原型设计素材</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Element UI</td>
+<td>46</td>
+<td>81%</td>
+<td>vue-element-admin</td>
+<td>饿了么</td>
+<td>41.6K</td>
+<td>Axure、Sketch</td>
+</tr>
+<tr>
+<td>Ant Design Vue</td>
+<td>55</td>
+<td>87%</td>
+<td>Ant Design Pro</td>
+<td>社区主导，蚂蚁金服技术支持</td>
+<td>8.4K</td>
+<td>Axure、Sketch</td>
+</tr>
+<tr>
+<td>iView</td>
+<td>54</td>
+<td>无</td>
+<td>iView-admin</td>
+<td>Talkingdata</td>
+<td>3.x版本22.7K,4.x版本482</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<h2 id="2-资源"><a href="#2-资源" class="headerlink" title="2. 资源"></a>2. 资源</h2><ul>
+<li>Element UI</li>
 </ul>
-<p>router 实例。</p>
+<p>文档：<a href="https://element.eleme.io/#/zh-CN/component/installation" target="_blank" rel="noopener">https://element.eleme.io/#/zh-CN/component/installation</a><br>vue-element-admin预览：<a href="https://panjiachen.github.io/vue-element-admin/#/login" target="_blank" rel="noopener">https://panjiachen.github.io/vue-element-admin/#/login</a><br>vue-element-admin项目文档：<a href="https://panjiachen.github.io/vue-element-admin-site/zh/" target="_blank" rel="noopener">https://panjiachen.github.io/vue-element-admin-site/zh/</a><br>vue-element-admin项目源码：<a href="https://github.com/PanJiaChen/vue-element-admin" target="_blank" rel="noopener">https://github.com/PanJiaChen/vue-element-admin</a></p>
 <ul>
-<li>this.$route</li>
+<li>Ant Design Vue</li>
 </ul>
-<p>router对象</p>
+<p>文档：<a href="https://vue.ant.design/docs/vue/introduce-cn/" target="_blank" rel="noopener">https://vue.ant.design/docs/vue/introduce-cn/</a><br>Ant Design Pro预览：<a href="https://preview.pro.loacg.com/user/login" target="_blank" rel="noopener">https://preview.pro.loacg.com/user/login</a><br>Ant Design Pro项目文档：<a href="https://pro.loacg.com/docs/getting-started" target="_blank" rel="noopener">https://pro.loacg.com/docs/getting-started</a><br>Ant Design Pro项目源码：<a href="https://github.com/sendya/ant-design-pro-vue" target="_blank" rel="noopener">https://github.com/sendya/ant-design-pro-vue</a></p>
+<ul>
+<li>iView</li>
+</ul>
+<p>文档：<a href="https://www.iviewui.com/docs/introduce" target="_blank" rel="noopener">https://www.iviewui.com/docs/introduce</a><br>iView-admin预览:<a href="https://admin.iviewui.com/login" target="_blank" rel="noopener">https://admin.iviewui.com/login</a><br>iView-admin项目文档：<a href="https://lison16.github.io/iview-admin-doc/#/" target="_blank" rel="noopener">https://lison16.github.io/iview-admin-doc/#/</a><br>iView-admin项目源码：<a href="https://github.com/iview/iview-admin" target="_blank" rel="noopener">https://github.com/iview/iview-admin</a></p>
 
     </div>
     
@@ -196,17 +243,11 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2019/10/16/vue-frame/" class="pre-post btn btn-default" title='Vue UI框架对比：Element UI、Ant Design Vue、iView'>
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            Vue UI框架对比：Element UI、Ant Design Vue、iView</span>
-    </a>
     
-    
-    <a href="/2019/10/14/vue-router-advanced/" class="next-post btn btn-default" title='Vue-router高级进阶知识'>
+    <a href="/2019/10/15/vue-router-objects/" class="next-post btn btn-default" title='搞清楚Vue-router中的Router、Router实例、Router对象的区别与联系'>
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            Vue-router高级进阶知识</span><i class="fa fa-angle-right fa-fw"></i>
+            搞清楚Vue-router中的Router、Router实例、Router对象的区别与联系</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -245,7 +286,7 @@ new Valine({
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Router"><span class="toc-text">1. Router</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Router实例"><span class="toc-text">2. Router实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Router对象"><span class="toc-text">3. Router对象</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-对比"><span class="toc-text">1. 对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-资源"><span class="toc-text">2. 资源</span></a></li></ol>
         
     </div>
 </aside>
