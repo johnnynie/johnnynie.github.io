@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="聂俊蝉的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://johnnynie.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="Vue,Vue事件">
+
+
+<meta name="description" content="Vue使用v-on指令绑定事件，简写为@，其用在普通元素上时，只能监听原生 DOM 事件。用在自定义元素组件上时，也可以监听子组件触发的自定义事件。
+1.修饰符
+stop - 调用 event....">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    Vue绑定事件v-on(@)与修饰符 |
+    
+    聂俊蝉的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="聂俊蝉的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Johnnynie'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://johnnynie.github.io">
+                        聂俊蝉的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Vue/"><i class="fa "></i>
+                                Vue</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端工具/"><i class="fa "></i>
+                                前端工具</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Vue绑定事件v-on(@)与修饰符">
+            
+            Vue绑定事件v-on(@)与修饰符
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/Vue/">Vue</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Vue/">Vue</a> <a class="tag-link" href="/tags/Vue事件/">Vue事件</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/11/05</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>Vue使用v-on指令绑定事件，简写为@，其用在普通元素上时，只能监听原生 DOM 事件。用在自定义元素组件上时，也可以监听子组件触发的自定义事件。</p>
+<h3 id="1-修饰符"><a href="#1-修饰符" class="headerlink" title="1.修饰符"></a>1.修饰符</h3><ul>
+<li>stop - 调用 event.stopPropagation(),停止冒泡。</li>
+<li>prevent - 调用 event.preventDefault()，组织浏览器默认事件。</li>
+<li>capture - 添加事件侦听器时使用 capture 模式。</li>
+<li>self - 只当事件是从侦听器绑定的元素本身触发时才触发回调。</li>
+<li>{keyCode | keyAlias} - 只当事件是从特定键触发时才触发回调。</li>
+<li>native - 监听组件根元素的原生事件。</li>
+<li>once - 只触发一次回调。</li>
+<li>left - (2.2.0) 只当点击鼠标左键时触发。</li>
+<li>right - (2.2.0) 只当点击鼠标右键时触发。</li>
+<li>middle - (2.2.0) 只当点击鼠标中键时触发。</li>
+<li>passive - (2.3.0) 以 { passive: true } 模式添加侦听器</li>
+</ul>
+<h3 id="2-示例"><a href="#2-示例" class="headerlink" title="2.示例"></a>2.示例</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 方法处理器 --&gt;</span><br><span class="line">&lt;button v-on:click=<span class="string">"doThis"</span>&gt;&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 动态事件 (<span class="number">2.6</span><span class="number">.0</span>+) --&gt;</span><br><span class="line">&lt;button v-on:[event]=<span class="string">"doThis"</span>&gt;&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 内联语句 --&gt;</span><br><span class="line">&lt;button v-on:click=<span class="string">"doThat('hello', $event)"</span>&gt;&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 缩写 --&gt;</span><br><span class="line">&lt;button @click=<span class="string">"doThis"</span>&gt;&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 动态事件缩写 (<span class="number">2.6</span><span class="number">.0</span>+) --&gt;</span><br><span class="line">&lt;button @[event]=<span class="string">"doThis"</span>&gt;&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 停止冒泡 --&gt;</span><br><span class="line">&lt;button @click.stop=<span class="string">"doThis"</span>&gt;&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 阻止默认行为 --&gt;</span><br><span class="line">&lt;button @click.prevent=<span class="string">"doThis"</span>&gt;&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 阻止默认行为，没有表达式 --&gt;</span><br><span class="line">&lt;form @submit.prevent&gt;&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--  串联修饰符 --&gt;</span><br><span class="line">&lt;button @click.stop.prevent=<span class="string">"doThis"</span>&gt;&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 键修饰符，键别名 --&gt;</span><br><span class="line">&lt;input @keyup.enter=<span class="string">"onEnter"</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 键修饰符，键代码 --&gt;</span><br><span class="line">&lt;input @keyup<span class="number">.13</span>=<span class="string">"onEnter"</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 点击回调只会触发一次 --&gt;</span><br><span class="line">&lt;button v-on:click.once=<span class="string">"doThis"</span>&gt;&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 对象语法 (<span class="number">2.4</span><span class="number">.0</span>+) --&gt;</span><br><span class="line">&lt;button v-on=<span class="string">"&#123; mousedown: doThis, mouseup: doThat &#125;"</span>&gt;&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//在子组件上监听自定义事件 (当子组件触发“my-event”时将调用事件处理器)：</span></span><br><span class="line">&lt;my-component @my-event=<span class="string">"handleThis"</span>&gt;&lt;/my-component&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 内联语句 --&gt;</span><br><span class="line">&lt;my-component @my-event=<span class="string">"handleThis(123, $event)"</span>&gt;&lt;/my-component&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 组件中的原生事件 --&gt;</span><br><span class="line">&lt;my-component @click.native=<span class="string">"onClick"</span>&gt;&lt;/my-component&gt;</span><br></pre></td></tr></table></figure>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="http://johnnynie.github.io" target="_blank">Johnnynie</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2019/10/24/vue-vuex/" class="next-post btn btn-default" title='Vue状态（数据）管理：Vuex'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Vue状态（数据）管理：Vuex</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: '昵称,邮箱'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-修饰符"><span class="toc-text">1.修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-示例"><span class="toc-text">2.示例</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>
