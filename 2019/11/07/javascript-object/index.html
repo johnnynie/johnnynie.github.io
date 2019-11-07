@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="聂俊蝉的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://johnnynie.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="javascript,javascript面向对象">
+
+
+<meta name="description" content="1、什么是对象、对象的属性、方法对象是由一些变量和函数组成的一个集合，我们将这些变量和函数称之为对象里面的属性和方法，如下是一个自定义对象单例(对象直接量)的例子：
+12345678910111...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    彻底研透javascript中的对象及面向对象编程 |
+    
+    聂俊蝉的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="聂俊蝉的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Johnnynie'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://johnnynie.github.io">
+                        聂俊蝉的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/javascript/"><i class="fa "></i>
+                                javascript</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Vue/"><i class="fa "></i>
+                                Vue</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端工具/"><i class="fa "></i>
+                                前端工具</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="彻底研透javascript中的对象及面向对象编程">
+            
+            彻底研透javascript中的对象及面向对象编程
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/javascript/">javascript</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/javascript/">javascript</a> <a class="tag-link" href="/tags/javascript面向对象/">javascript面向对象</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/11/07</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="1、什么是对象、对象的属性、方法"><a href="#1、什么是对象、对象的属性、方法" class="headerlink" title="1、什么是对象、对象的属性、方法"></a>1、什么是对象、对象的属性、方法</h3><p>对象是由一些变量和函数组成的一个集合，我们将这些变量和函数称之为对象里面的属性和方法，如下是一个自定义对象单例(对象直接量)的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> car = &#123;</span><br><span class="line">  brand : <span class="string">'BMW'</span>,<span class="comment">//品牌</span></span><br><span class="line">  model : <span class="string">'X3'</span>,<span class="comment">//型号</span></span><br><span class="line">  endurance : <span class="string">'600km'</span>,<span class="comment">//续航里程</span></span><br><span class="line">  oil : <span class="number">30</span>,<span class="comment">//邮箱油量</span></span><br><span class="line">  getBrand : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.brand);</span><br><span class="line">  &#125;,</span><br><span class="line">  getOil: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      alert(<span class="keyword">this</span>.oil);</span><br><span class="line">  &#125;,</span><br><span class="line">  addOil: <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.oil  += n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以通过以下一些代码访问对象成员：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">car.brand;<span class="comment">//访问car的品牌</span></span><br><span class="line">car.getBrand();<span class="comment">//输出car的品牌</span></span><br><span class="line">car.addOil(<span class="number">1</span>);<span class="comment">//添加car的油量</span></span><br><span class="line">car.getOil();<span class="comment">//获得car的油量</span></span><br></pre></td></tr></table></figure>
+
+<p>此示例代码地址：</p>
+<p>在javascript其实我们一直都在使用对象，当我们这样使用字符串的方法时：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myString.split(<span class="string">','</span>);</span><br></pre></td></tr></table></figure>
+
+<p>当这样访问document对象时：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myDiv = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line"><span class="keyword">var</span> myVideo = <span class="built_in">document</span>.querySelector(<span class="string">'video'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>javascript还有很多内建对象，如：Array、Math、Date等。</p>
+<h3 id="2、this的指向"><a href="#2、this的指向" class="headerlink" title="2、this的指向"></a>2、this的指向</h3><p>在上面car的对象定义中，我们用到了this。<br>this 指向了代码所在的对象(代码运行时所在的对象)，在对象直接量里this看起来不是很有用，但是当你动态创建一个对象（例如使用构造器）时它是非常有用的，之后你会更清楚它的用途。关于this的更详细文章：<a href="https://www.cnblogs.com/niejunchan/p/5000693.html" target="_blank" rel="noopener">彻底领悟javascript中的this</a></p>
+<h3 id="3、创建对象的几种方式"><a href="#3、创建对象的几种方式" class="headerlink" title="3、创建对象的几种方式"></a>3、创建对象的几种方式</h3><p>除了1中直接用对象直接量创建对象，我们还有以下几种方式：</p>
+<ul>
+<li>通过构造函数创建<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Car</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.brand=params.brand;<span class="comment">//品牌</span></span><br><span class="line">  <span class="keyword">this</span>.model=params.model;<span class="comment">//型号</span></span><br><span class="line">  <span class="keyword">this</span>.endurance=params.endurance;<span class="comment">//续航里程</span></span><br><span class="line">  <span class="keyword">this</span>.oil=params.oil;<span class="comment">//邮箱油量</span></span><br><span class="line">  <span class="keyword">this</span>.getBrand=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.brand);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">this</span>.getOil=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      alert(<span class="keyword">this</span>.oil);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">this</span>.addOil=<span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.oil  += n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Car1 = <span class="keyword">new</span> Car(&#123;</span><br><span class="line">    brand : <span class="string">'BMW'</span>,<span class="comment">//品牌</span></span><br><span class="line">    model : <span class="string">'X3'</span>,<span class="comment">//型号</span></span><br><span class="line">    endurance : <span class="string">'600km'</span>,<span class="comment">//续航里程</span></span><br><span class="line">    oil : <span class="number">30</span>,<span class="comment">//邮箱油量</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> Car2 = <span class="keyword">new</span> Car(&#123;</span><br><span class="line">    brand : <span class="string">'BYD'</span>,<span class="comment">//品牌</span></span><br><span class="line">    model : <span class="string">'元'</span>,<span class="comment">//型号</span></span><br><span class="line">    endurance : <span class="string">'500km'</span>,<span class="comment">//续航里程</span></span><br><span class="line">    oil : <span class="number">50</span>,<span class="comment">//邮箱油量</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<ul>
+<li>通过Object()构造函数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> car1 = <span class="keyword">new</span> <span class="built_in">Object</span>();<span class="comment">//空对象</span></span><br><span class="line">car.brand = <span class="string">"BMW"</span>;<span class="comment">//成员赋值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> car2 = <span class="keyword">new</span> <span class="built_in">Object</span>(&#123;<span class="comment">//构造时就填充属性和方法</span></span><br><span class="line">  brand : <span class="string">'BMW'</span>,<span class="comment">//品牌</span></span><br><span class="line">  model : <span class="string">'X3'</span>,<span class="comment">//型号</span></span><br><span class="line">  endurance : <span class="string">'600km'</span>,<span class="comment">//续航里程</span></span><br><span class="line">  oil : <span class="number">30</span>,<span class="comment">//邮箱油量</span></span><br><span class="line">  getBrand : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.brand);</span><br><span class="line">  &#125;,</span><br><span class="line">  getOil: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      alert(<span class="keyword">this</span>.oil);</span><br><span class="line">  &#125;,</span><br><span class="line">  addOil: <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.oil  += n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过Object对象的create()方法<br>通过这种方式创建的属性和方法在原型对象上，不可枚举。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> car1 = <span class="keyword">new</span> <span class="built_in">Object</span>(&#123;<span class="comment">//构造时就填充属性和方法</span></span><br><span class="line">  brand : <span class="string">'BMW'</span>,<span class="comment">//品牌</span></span><br><span class="line">  model : <span class="string">'X3'</span>,<span class="comment">//型号</span></span><br><span class="line">  endurance : <span class="string">'600km'</span>,<span class="comment">//续航里程</span></span><br><span class="line">  oil : <span class="number">30</span>,<span class="comment">//邮箱油量</span></span><br><span class="line">  getBrand : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.brand);</span><br><span class="line">  &#125;,</span><br><span class="line">  getOil: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      alert(<span class="keyword">this</span>.oil);</span><br><span class="line">  &#125;,</span><br><span class="line">  addOil: <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.oil  += n;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//以 car1 为原型对象创建了 car2 对象。car2.__proto__指向的即是car1</span></span><br><span class="line"><span class="keyword">var</span> car2 = <span class="built_in">Object</span>.create(car1);<span class="comment">//以car1为基础创建car2,它们具有相同的属性和方法，但属于不同的引用，创建的属性和方法在原型对象上，不可枚举</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="4、原型对象（prototype）"><a href="#4、原型对象（prototype）" class="headerlink" title="4、原型对象（prototype）"></a>4、原型对象（prototype）</h3><p>每个对象拥有一个原型对象（prototype）,对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推。这种关系常被称为原型链 (prototype chain)，它解释了为何一个对象会拥有定义在其他对象中的属性和方法。准确地说，这些属性和方法定义在Object的构造器函数(constructor functions)之上的prototype属性上，而非对象实例本身。因为prototype是函数的一个特殊属性，而不是对象的。<br>在传统的 OOP 中（如：java），首先定义“类”，此后创建对象实例时，类中定义的所有属性和方法都被复制到实例中。在 JavaScript 中并不如此复制——而是在对象实例和它的构造器之间建立一个链接（它是<strong>proto</strong>属性，是从构造函数的prototype属性派生的），之后通过上溯原型链，在构造器中找到这些属性和方法。<br>Object.getPrototypeOf(new Foobar())和Foobar.prototype指向着同一个对象,都是指向Foobar构造函数的prototype。</p>
+<p>在javascript中，函数可以有属性。 每个函数都有一个特殊的属性叫作原型（prototype） 。打开一个控制台 (在Chrome和Firefox中，可以按Ctrl+Shift+I来打开)切换到”控制台” 选项卡, 复制粘贴下面的JavaScript代码，然后按回车来运行.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log( doSomething.prototype );</span><br><span class="line"><span class="comment">// It does not matter how you declare the function, a</span></span><br><span class="line"><span class="comment">//  function in javascript will always have a default</span></span><br><span class="line"><span class="comment">//  prototype property.</span></span><br><span class="line"><span class="keyword">var</span> doSomething = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;; </span><br><span class="line"><span class="built_in">console</span>.log( doSomething.prototype );</span><br></pre></td></tr></table></figure>
+
+<p>正如上面所看到的, doSomething 函数有一个默认的原型属性，它在控制台上面呈现了出来. 运行这段代码之后，控制台上面应该出现了像这样的一个对象.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">constructor</span>: ƒ doSomething(),</span><br><span class="line">    __proto__: &#123;</span><br><span class="line">        <span class="keyword">constructor</span>: ƒ Object(),</span><br><span class="line">        hasOwnProperty: ƒ hasOwnProperty(),</span><br><span class="line">        isPrototypeOf: ƒ isPrototypeOf(),</span><br><span class="line">        propertyIsEnumerable: ƒ propertyIsEnumerable(),</span><br><span class="line">        toLocaleString: ƒ toLocaleString(),</span><br><span class="line">        toString: ƒ toString(),</span><br><span class="line">        valueOf: ƒ valueOf()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在，我们可以添加一些属性到 doSomething 的原型上面，如下所示.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">doSomething.prototype.foo = <span class="string">"bar"</span>;</span><br><span class="line"><span class="built_in">console</span>.log( doSomething.prototype );</span><br></pre></td></tr></table></figure>
+
+<p>结果:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    foo: <span class="string">"bar"</span>,</span><br><span class="line">    <span class="keyword">constructor</span>: ƒ doSomething(),</span><br><span class="line">    __proto__: &#123;</span><br><span class="line">        <span class="keyword">constructor</span>: ƒ Object(),</span><br><span class="line">        hasOwnProperty: ƒ hasOwnProperty(),</span><br><span class="line">        isPrototypeOf: ƒ isPrototypeOf(),</span><br><span class="line">        propertyIsEnumerable: ƒ propertyIsEnumerable(),</span><br><span class="line">        toLocaleString: ƒ toLocaleString(),</span><br><span class="line">        toString: ƒ toString(),</span><br><span class="line">        valueOf: ƒ valueOf()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后，我们可以使用 new 运算符来在现在的这个原型基础之上，创建一个 doSomething 的实例。正确使用 new 运算符的方法就是在正常调用函数时，在函数名的前面加上一个 new 前缀. 通过这种方法，在调用函数前加一个 new ，它就会返回一个这个函数的实例化对象. 然后，就可以在这个对象上面添加一些属性.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">doSomething.prototype.foo = <span class="string">"bar"</span>; <span class="comment">// add a property onto the prototype</span></span><br><span class="line"><span class="keyword">var</span> doSomeInstancing = <span class="keyword">new</span> doSomething();</span><br><span class="line">doSomeInstancing.prop = <span class="string">"some value"</span>; <span class="comment">// add a property onto the object</span></span><br><span class="line"><span class="built_in">console</span>.log( doSomeInstancing );</span><br></pre></td></tr></table></figure>
+
+<p>结果:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    prop: <span class="string">"some value"</span>,</span><br><span class="line">    __proto__: &#123;</span><br><span class="line">        foo: <span class="string">"bar"</span>,</span><br><span class="line">        <span class="keyword">constructor</span>: ƒ doSomething(),</span><br><span class="line">        __proto__: &#123;</span><br><span class="line">            <span class="keyword">constructor</span>: ƒ Object(),</span><br><span class="line">            hasOwnProperty: ƒ hasOwnProperty(),</span><br><span class="line">            isPrototypeOf: ƒ isPrototypeOf(),</span><br><span class="line">            propertyIsEnumerable: ƒ propertyIsEnumerable(),</span><br><span class="line">            toLocaleString: ƒ toLocaleString(),</span><br><span class="line">            toString: ƒ toString(),</span><br><span class="line">            valueOf: ƒ valueOf()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就像上面看到的, doSomeInstancing 的 <strong>proto</strong> 属性就是doSomething.prototype. 但是这又有什么用呢? 好吧,当你访问 doSomeInstancing 的一个属性, 浏览器首先查找 doSomeInstancing 是否有这个属性. 如果 doSomeInstancing 没有这个属性, 然后浏览器就会在 doSomeInstancing 的 <strong>proto</strong> 中查找这个属性(也就是 doSomething.prototype). 如果 doSomeInstancing 的 <strong>proto</strong> 有这个属性, 那么 doSomeInstancing 的 <strong>proto</strong> 上的这个属性就会被使用. 否则, 如果 doSomeInstancing 的 <strong>proto</strong> 没有这个属性, 浏览器就会去查找 doSomeInstancing 的 <strong>proto</strong> 的 <strong>proto</strong> ，看它是否有这个属性. 默认情况下, 所有函数的原型属性的 <strong>proto</strong> 就是 window.Object.prototype. 所以 doSomeInstancing 的 <strong>proto</strong> 的 <strong>proto</strong> (也就是 doSomething.prototype 的 <strong>proto</strong> (也就是 Object.prototype)) 会被查找是否有这个属性. 如果没有在它里面找到这个属性, 然后就会在 doSomeInstancing 的 <strong>proto</strong> 的 <strong>proto</strong> 的 <strong>proto</strong> 里面查找. 然而这有一个问题: doSomeInstancing 的 <strong>proto</strong> 的 <strong>proto</strong> 的 <strong>proto</strong> 不存在. 最后, 原型链上面的所有的 <strong>proto</strong> 都被找完了, 浏览器所有已经声明了的 <strong>proto</strong> 上都不存在这个属性，然后就得出结论，这个属性是 undefined.(这段很拗口，但是对理解prototype是怎么运行的非常有用，建议看不懂的多读几遍，好好理解一下。)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">doSomething.prototype.foo = <span class="string">"bar"</span>;</span><br><span class="line"><span class="keyword">var</span> doSomeInstancing = <span class="keyword">new</span> doSomething();</span><br><span class="line">doSomeInstancing.prop = <span class="string">"some value"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"doSomeInstancing.prop:      "</span> + doSomeInstancing.prop);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"doSomeInstancing.foo:       "</span> + doSomeInstancing.foo);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"doSomething.prop:           "</span> + doSomething.prop);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"doSomething.foo:            "</span> + doSomething.foo);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"doSomething.prototype.prop: "</span> + doSomething.prototype.prop);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"doSomething.prototype.foo:  "</span> + doSomething.prototype.foo);</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">doSomeInstancing.prop:      some value</span><br><span class="line">doSomeInstancing.foo:       bar</span><br><span class="line">doSomething.prop:           <span class="literal">undefined</span></span><br><span class="line">doSomething.foo:            <span class="literal">undefined</span></span><br><span class="line">doSomething.prototype.prop: <span class="literal">undefined</span></span><br><span class="line">doSomething.prototype.foo:  bar</span><br></pre></td></tr></table></figure>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="http://johnnynie.github.io" target="_blank">Johnnynie</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2019/11/05/vue-event/" class="next-post btn btn-default" title='Vue绑定事件v-on(@)与修饰符'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Vue绑定事件v-on(@)与修饰符</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: '昵称,邮箱'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、什么是对象、对象的属性、方法"><span class="toc-text">1、什么是对象、对象的属性、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、this的指向"><span class="toc-text">2、this的指向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、创建对象的几种方式"><span class="toc-text">3、创建对象的几种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、原型对象（prototype）"><span class="toc-text">4、原型对象（prototype）</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>
