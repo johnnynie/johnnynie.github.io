@@ -1,0 +1,377 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="聂俊蝉的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://johnnynie.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="css,css选择器">
+
+
+<meta name="description" content="一、css基本选择器列表：
+
+
+选择器名称
+选择内容
+示例
+
+
+
+元素选择器（也称作标签或类型选择器）
+所有指定类型的 HTML 元素
+h1 {  }
+
+
+通用选择器
+所有类型的 HTML 元素...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    css基本选择器 |
+    
+    聂俊蝉的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="聂俊蝉的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Johnnynie'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://johnnynie.github.io">
+                        聂俊蝉的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/javascript/"><i class="fa "></i>
+                                javascript</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/Vue/"><i class="fa "></i>
+                                Vue</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/css/"><i class="fa "></i>
+                                css</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端工具/"><i class="fa "></i>
+                                前端工具</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="css基本选择器">
+            
+            css基本选择器
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/css/">css</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/css/">css</a> <a class="tag-link" href="/tags/css选择器/">css选择器</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/12/02</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="一、css基本选择器列表："><a href="#一、css基本选择器列表：" class="headerlink" title="一、css基本选择器列表："></a>一、css基本选择器列表：</h2><table>
+<thead>
+<tr>
+<th>选择器名称</th>
+<th>选择内容</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>元素选择器（也称作标签或类型选择器）</td>
+<td>所有指定类型的 HTML 元素</td>
+<td>h1 {  }</td>
+</tr>
+<tr>
+<td>通用选择器</td>
+<td>所有类型的 HTML 元素</td>
+<td>* {  }</td>
+</tr>
+<tr>
+<td>类选择器</td>
+<td>具有特定类的元素（单一页面中，一个类可以有多个实例）</td>
+<td>.box {  }</td>
+</tr>
+<tr>
+<td>ID 选择器</td>
+<td>具有特定 ID 的元素（单一 HTML 页面中，每个 ID 只对应一个元素，一个元素只对应一个 ID）</td>
+<td>#unique { }</td>
+</tr>
+<tr>
+<td>属性选择器</td>
+<td>拥有特定属性的元素</td>
+<td>a[title] {  }</td>
+</tr>
+<tr>
+<td>伪类选择器</td>
+<td>特定状态下的特定元素</td>
+<td>p:first-child { }(向元素的第一个子元素添加样式。)，a:hover{  }</td>
+</tr>
+<tr>
+<td>伪元素选择器</td>
+<td>用于向某些选择器设置特殊效果</td>
+<td>p::first-line { }</td>
+</tr>
+<tr>
+<td>后代选择器</td>
+<td>后代HTML元素选择器</td>
+<td>article p</td>
+</tr>
+<tr>
+<td>子选择器</td>
+<td>直接子HTML元素选择器</td>
+<td>article &gt; p</td>
+</tr>
+<tr>
+<td>相邻同胞选择器</td>
+<td>相邻同胞HTML元素</td>
+<td>h1 + p</td>
+</tr>
+<tr>
+<td>同胞选择器</td>
+<td>同胞HTML元素</td>
+<td>h1 ~ p</td>
+</tr>
+</tbody></table>
+<h2 id="二、特殊说明"><a href="#二、特殊说明" class="headerlink" title="二、特殊说明"></a>二、特殊说明</h2><h3 id="1、伪类选择器"><a href="#1、伪类选择器" class="headerlink" title="1、伪类选择器"></a>1、伪类选择器</h3><p>常见伪类选择器包含：</p>
+<ul>
+<li>锚伪类a:link（未访问的链接）、a:visited（已访问的链接）、a:hover（鼠标移动到链接上）、a:active（选定的链接）</li>
+<li>:first-child，选择元素的第一个子元素<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p:first-child &#123;font-weight: bold;&#125;//作为子元素的第一个P元素</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2、伪元素选择器"><a href="#2、伪元素选择器" class="headerlink" title="2、伪元素选择器"></a>2、伪元素选择器</h3><p>按照规范，伪元素选择器应该使用双冒号（::）而不是单个冒号（:），以便区分伪类和伪元素。但是，由于旧版本的 W3C 规范并未对此进行特别区分，因此目前绝大多数的浏览器都同时支持使用这两种方式来表示伪元素。</p>
+<p>常见的伪元素选择器包含：</p>
+<ul>
+<li>::first-line，向文本的首行设置样式（第二行将不会应用样式）</li>
+<li>::first-letter，向文本的首字母设置特殊样式（其他字母不会应用样式）</li>
+<li>::before，可以在元素的内容前面插入新内容</li>
+<li>::after，可以在元素的内容之后插入新内容</li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="http://johnnynie.github.io" target="_blank">Johnnynie</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2019/11/29/Sass/" class="next-post btn btn-default" title='Sass的基本用法'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Sass的基本用法</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: '昵称,邮箱'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、css基本选择器列表："><span class="toc-text">一、css基本选择器列表：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、特殊说明"><span class="toc-text">二、特殊说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、伪类选择器"><span class="toc-text">1、伪类选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、伪元素选择器"><span class="toc-text">2、伪元素选择器</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2019
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>
